@@ -1560,8 +1560,9 @@ function readState(s,command=false)
 	nlTar = s.nl.tbri;
 	nlFade = s.nl.fade;
 	syncSend = s.udpn.send;
-	// Only reset currentPreset if device indicates a preset is loaded, don't reset to 0 if we had one selected
+	// Update currentPreset based on device state
 	if (s.ps > 0) currentPreset = s.ps;
+	else currentPreset = -1;
 
 	tr = s.transition;
 	gId('tt').value = tr/10;
