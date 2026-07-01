@@ -754,3 +754,47 @@ Favourites (index.htm after pql div):
 - Marker positioning uses `transform: translate(-50%, -50%)` to center the circle on the click point.
 
 **Deploy:** 1 → 2 → 3
+
+---
+
+## Color Pill Update Preset — Save current colors to active preset (Colours tab)
+
+**Files:** `wled00/data/index.htm`, `wled00/data/index.css`, `wled00/data/index.js`
+
+**Approach:** Quick color swatches now show "Update Preset" text next to each pill when a preset is loaded. Clicking text saves the current color picker value to that preset's primary color (c1).
+
+**HTML (`index.htm`):** Each color pill wrapped in `.qcs-container` with "Update Preset" text span pre-created next to it:
+```html
+<div class="qcs-container">
+  <div class="qcs" onclick="handleColorPill(this, '#ff0000');"></div>
+  <span class="qcs-update-text">Update Preset</span>
+</div>
+```
+
+**CSS (`index.css`):** 
+- Container uses `display: inline-flex` with `gap: 6px`
+- Text hidden by default (`display: none`)
+- CSS sibling selector shows text when pill has `.active` class: `.qcs.active ~ .qcs-update-text { display: inline; }`
+- Pill shrinks when active (`width: 22px`, `height: 22px`)
+
+**JS (`index.js`):** Two changes:
+
+1. **`handleColorPill(pill, col)`** — Called on pill click:
+   - Applies color via `pC(col)`
+   - Checks if preset is active: `if (currentPreset <= 0 || !pJson[currentPreset]) return;`
+   - Adds `.active` class to pill (shrinks it, shows text via CSS)
+   - Attaches onclick handler to update text
+   - Update handler: captures `cpick.color.rgb`, updates `pJson[currentPreset].seg[0].c1`, calls `_uploadPresetsJson()`, shows green toast, removes active class
+
+2. **State update (line 1565)** — Reset `currentPreset` when device indicates no preset:
+   - Changed from: `if (s.ps > 0) currentPreset = s.ps;`
+   - To: `if (s.ps > 0) currentPreset = s.ps; else currentPreset = -1;`
+   - Ensures currentPreset only stays set when actual preset is loaded
+
+**Gotchas:**
+- **currentPreset must reset to -1** when no preset is loaded, or the check fails and text appears for unsaved effects
+- Text pre-exists in HTML (no DOM creation), just toggled via CSS
+- Update text onclick handler is recreated each time pill is clicked, ensuring it has closure over current pill element
+- Color source is `cpick.color.rgb` (color picker), which matches the color applied by the pill click
+
+**Deploy:** 1 → 2 → 3
