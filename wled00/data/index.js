@@ -2799,8 +2799,8 @@ function handleColorPill(pill, col) {
 	// Apply the color
 	pC(col);
 
-	// Only show update option if a preset is active
-	if (currentPreset <= 0) return;
+	// Only show update option if a preset exists and is active
+	if (currentPreset <= 0 || !pJson[currentPreset]) return;
 
 	// Get the container
 	const container = pill.parentElement;
