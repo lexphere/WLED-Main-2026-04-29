@@ -106,17 +106,17 @@
 			</div>
 		</div>
 		<div id="qcs-w">
-			<div class="qcs" onclick="pC('#ff0000');" style="background-color:#ff0000;"></div>
-			<div class="qcs" onclick="pC('#ffa000');" style="background-color:#ffa000;"></div>
-			<div class="qcs" onclick="pC('#ffc800');" style="background-color:#ffc800;"></div>
-			<div class="qcs" onclick="pC('#ffe0a0');" style="background-color:#ffe0a0;"></div>
-			<div class="qcs qcsw" onclick="pC('#ffffff');" style="background-color:#ffffff;"></div>
-			<div class="qcs qcsb" onclick="pC('#000000');" style="background-color:#000000;"></div><br>
-			<div class="qcs" onclick="pC('#ff00ff');" style="background-color:#ff00ff;"></div>
-			<div class="qcs" onclick="pC('#0000ff');" style="background-color:#0000ff;"></div>
-			<div class="qcs" onclick="pC('#00ffc8');" style="background-color:#00ffc8;"></div>
-			<div class="qcs" onclick="pC('#08ff00');" style="background-color:#08ff00;"></div>
-			<div class="qcs" onclick="pC('rnd');" title="Random" style="background:linear-gradient(to right, red, orange, yellow, green, blue, purple);transform: translateY(-11px);">R</div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#ff0000');" style="background-color:#ff0000;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#ffa000');" style="background-color:#ffa000;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#ffc800');" style="background-color:#ffc800;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#ffe0a0');" style="background-color:#ffe0a0;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs qcsw" onclick="handleColorPill(this, '#ffffff');" style="background-color:#ffffff;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs qcsb" onclick="handleColorPill(this, '#000000');" style="background-color:#000000;"></div><span class="qcs-update-text">Update Preset</span></div><br>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#ff00ff');" style="background-color:#ff00ff;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#0000ff');" style="background-color:#0000ff;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#00ffc8');" style="background-color:#00ffc8;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, '#08ff00');" style="background-color:#08ff00;"></div><span class="qcs-update-text">Update Preset</span></div>
+			<div class="qcs-container"><div class="qcs" onclick="handleColorPill(this, 'rnd');" title="Random" style="background:linear-gradient(to right, red, orange, yellow, green, blue, purple);transform: translateY(-11px);">R</div><span class="qcs-update-text">Update Preset</span></div>
 		</div>
 		<div id="csl" style="display:none">
 			<button id="csl0" title="Select slot" class="btn" onclick="selectSlot(0);" data-r="0" data-g="0" data-b="0" data-w="0">1</button>
